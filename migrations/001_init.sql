@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS masters (
+  id BIGSERIAL PRIMARY KEY,
+  tg_user_id TEXT UNIQUE,
+  name TEXT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS user_states (
+  id BIGSERIAL PRIMARY KEY,
+  tg_user_id TEXT NOT NULL UNIQUE,
+  state TEXT NOT NULL,
+  data JSONB NOT NULL DEFAULT '{}'::jsonb,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
