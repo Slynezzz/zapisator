@@ -698,4 +698,17 @@ node src/scripts/migrate.js   # применяет все pending миграци
 
 ---
 
+## Code organization rules
+
+- Do not place large amounts of unrelated logic in index.js, app.js, worker.js, bot.js, or server.js.
+- Keep entry files thin.
+- Put business logic in src/domain/*/service.js.
+- Put database access in src/domain/*/repo.js or src/db/*.
+- Keep Telegram and MAX adapters thin and channel-specific.
+- Keep admin/public/miniapp routes separate under src/web/.
+- Prefer splitting files over creating giant multi-responsibility modules.
+- Every change should preserve modularity and future maintainability.
+
+---
+
 *Последнее обновление: апрель 2026. Актуальный статус: Phase 2 завершена, Phase 3 в разработке.*
